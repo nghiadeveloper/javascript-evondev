@@ -171,3 +171,87 @@ const totalNumber = listNumber.reduce(function(previousValue, currentValue) {
     return previousValue + currentValue;
 }, 0);
 console.log(totalNumber);
+
+
+
+// By value và by references
+// By value: giá trị thực sự được lưu trong vùng bộ nhớ
+const number1 = 1;
+const number2 = 1;
+console.log(number1 === number2); // true
+// By references: nói tới vùng bộ nhớ
+const arr1 = [1, 2];
+const arr2 = [1, 2];
+console.log(arr1 === arr2); // false
+
+
+
+// Cách so sánh 2 mảng cơ bản
+// JSON: Javascript Object Notation
+/*
+{
+    "key": value,
+    "key": value,
+    "key": value,
+    "key": value,
+    "key": value
+}
+*/
+// Đối với toString(): [1, 2, 3].toString() -> "1, 2, 3"
+// JSON.stringify(value): convert giá trị sang dưới dạng JSON string
+// JSON.parse(value)
+JSON.stringify([1, 2, 3]); // "[1, 2, 3]"
+JSON.parse("[1, 2, 3]"); // [1, 2, 3]
+
+const arrStr1 = JSON.stringify(arr1);
+const arrStr2 = JSON.stringify(arr2);
+console.log(arrStr1 === arrStr2);
+
+
+
+// 2 cách để sao chép mảng
+const students = ["a", "b", "c", "d", "e"];
+// 1. Sử dụng phương thức slice
+const sliceStudent = students.slice();
+console.log(sliceStudent);
+// 2. spread operator [... array]
+const spreadStudent = [...students];
+console.log(spreadStudent);
+
+
+
+// 2 cách để gộp mảng
+// Ví dụ: [1, 2] [3, 4] [5, 6] -> [1, 2, 3, 4, 5, 6]
+const array1 = [1, 2]; 
+const array2 = [3, 4];
+const array3 = [5, 6];
+// 1. concat
+const mergeArray1 = array1.concat(array2, array3);
+console.log(mergeArray1);
+// 2. spread operator [... array]
+const mergeArray2 = [...array1, ...array2, ...array3];
+console.log(mergeArray2);
+
+
+
+// Destructuring
+const toys = ["ball", "sword", "arrow", "magic", "water", "fire"];
+const a1 = toys[0];
+const b1 = toys[1];
+const c1 = toys[2];
+console.log(a, b, c); // ["ball", "sword", "arrow"]
+// Destructuring array
+// const [indexName, indexName, indexName]
+const [x, y, z] = toys; 
+console.log(x, y, z); // ["ball", "sword", "arrow"]
+
+
+
+// Rest parameter
+const [ball, ...rest] = toys; 
+console.log(rest); // ["sword", "arrow", "magic", "water", "fire"]
+
+function demo(a, ...rest) {
+    console.log(a, rest);
+}
+demo(1, 2, 3, 4, 5);
